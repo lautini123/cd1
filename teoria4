@@ -1,0 +1,789 @@
+📌 Tema 4: Listas, indexación y mutabilidad. Iteración y ciclo while
+❗Antes de comenzar con la clase, hacete una copia de este documento así podés editarlo y guardar los cambios.
+
+Hacé clic acá arriba, donde dice "Copiar en Drive".
+
+Luego seguís trabajando en esa copia y te queda todo guardado en tu Drive.
+
+📈 De pocos a muchos datos...
+Una tienda ha registrado sus ventas mensuales durante todo un año, de enero a diciembre.
+
+Los datos de ventas (en miles de unidades) son los siguientes: 320, 280, 310, 290, 340, 360, 410, 390, 370, 350, 300, 330.
+
+Al principio, alguien pensó en guardar cada dato por separado:
+
+ventas_enero = 320
+ventas_febrero = 280
+ventas_marzo = 310
+# ...
+ventas_diciembre = 330
+🤯 ¡Pero son demasiadas variables!
+
+¿Habrá una forma más práctica de guardar esta información en la compu? 🤔
+
+Mirá este código, lée cada línea y pensá qué hace. Después ejecutalo para ver los resultados:
+
+
+[ ]
+ventas = [320, 280, 310, 290, 340, 360, 410, 390, 370, 350, 300, 330]
+print(ventas)
+
+print(ventas[1])
+print(ventas[5])
+print(ventas[11])
+
+print(ventas[0:3])
+print(ventas[3:6])
+print(ventas[6:9])
+print(ventas[9:12])
+[320, 280, 310, 290, 340, 360, 410, 390, 370, 350, 300, 330]
+280
+360
+330
+[320, 280, 310]
+[290, 340, 360]
+[410, 390, 370]
+[350, 300, 330]
+📌 Respondé:
+
+¿Qué hace la línea ventas = [320, 280, ...]? guarda el valor de todas las ventas durante el año
+¿Qué valores muestran ventas[0], ventas[5] y ventas[11]? ¿A qué meses corresponden? enero, junio, diciembre
+¿Qué pasa si cambiás ventas[0] por ventas[1]? ¿Y si probás ventas[-1]? me muestra febrero, y diciembre
+¿Qué valores devuelven ventas[0:3], ventas[3:6], etc.? ¿Qué parte del año representa cada una? los trimestres
+📋 Listas
+En el ejemplo anterior usamos una lista para guardar las ventas mensuales de una tienda.
+
+Una lista es una estructura de datos que permite almacenar varios valores en un solo lugar.
+
+En lugar de escribir una variable para cada mes del año, agrupamos todos los datos en una sola lista:
+
+ventas = [320, 280, 310, 290, 340, 360, 410, 390, 370, 350, 300, 330]
+En el ejemplo, cada número representa las ventas de un mes del año, desde enero hasta diciembre, en ese orden.
+
+Los valores que contiene una lista se llaman elementos. En este caso, la lista ventas tiene 12 elementos.
+
+El primer elemento es 320, el segundo 280, el tercero 310, y así sucesivamente.
+
+Usar listas es muy útil cuando la cantidad de datos es grande o puede cambiar. Además, nos permite acceder fácilmente a cualquier valor o conjunto de valores, como veremos a continuación.
+
+🔢 Indexación
+Cada elemento de la lista ocupa una posición, que se llama índice.
+
+En Python, los índices comienzan en 0 y aumentan de uno en uno hacia la derecha. Estos son los índices positivos.
+
+El índice 0 representa el primer elemento, 1 el segundo, y así sucesivamente:
+
+print(ventas[0])   # 320 → primer mes (enero)
+print(ventas[1])   # 280 → segundo mes (febrero)
+print(ventas[2])   # 310 → tercer mes (marzo)
+Como los índices empiezan en 0, el último índice de una lista se obtiene restando 1 al número total de elementos. En el ejemplo, como la lista ventas tiene 12 elementos, el índice del último elemento es 11.
+
+También podemos usar índices negativos para contar desde el final.
+
+El índice -1 representa el último elemento, -2 el penúltimo, y así sucesivamente:
+
+print(ventas[-1])  # 330 → último mes (diciembre)
+print(ventas[-2])  # 300 → penúltimo mes (noviembre)
+print(ventas[-3])  # 350 → antepenúltimo mes (octubre)
+En resumen:
+
+Los índices positivos cuentan desde el principio de la lista y son útiles cuando conocemos la posición desde el inicio de la lista.
+Los índices negativos cuentan desde el final de la lista y permiten acceder fácilmente a los últimos elementos.
+🍰 Rebanado
+También podemos extraer una parte de la lista. Esto se conoce como rebanado (o slicing, en inglés).
+
+Para ello, se utiliza la notación i:j, donde i y j son índices.
+
+Esta notación devuelve una sublista que va desde el índice i hasta el índice j, pero sin incluir este último.
+
+Esto significa que abarca desde i hasta j-1 inclusive, siendo el intervalo cerrado a la izquierda y abierto a la derecha.
+
+print(ventas[0:3])  # [320, 280, 310] → primer trimestre (enero a marzo)
+print(ventas[3:6])  # [290, 340, 360] → segundo trimestre (abril a junio)
+print(ventas[6:9])  # [410, 390, 370] → tercer trimestre (julio a septiembre)
+print(ventas[9:12]) # [350, 300, 330] → cuarto trimestre (octubre a diciembre)
+La operación de rebanado devuelve una nueva lista con la porción deseada de la lista original.
+
+Se puede usar para hacer copias de partes de la lista o incluso de la lista completa.
+
+Podemos omitir el primer o el segundo índice para indicar que queremos ir desde el principio o hasta el final:
+
+print(ventas[:3])   # [320, 280, 310] → desde el inicio hasta antes del índice 3
+print(ventas[9:])   # [350, 300, 330] → desde el índice 9 hasta el final
+print(ventas[:])    # [320, 280, ..., 330] → desde el inicio hasta el final
+Esto hace el código más limpio y fácil de leer, especialmente cuando no necesitamos especificar ambos extremos.
+
+⏩ Paso (tercer índice)
+
+Podemos agregar un tercer número usando la notación i:j:k, donde k es el paso:
+
+print(ventas[::2])    # [320, 310, 340, 410, 370, 300] → los elementos en posiciones pares
+print(ventas[1::2])   # [280, 290, 360, 390, 350, 330] → los elementos en posiciones impares
+print(ventas[::-1])   # [330, 300, 350, ..., 320] → lista en orden inverso
+El paso permite saltar elementos, seleccionar patrones (como meses alternos) o invertir el orden de una lista.
+
+
+[ ]
+producto=["harina", "leche", "tomate", "azucar", "agua"]
+print(producto)
+cantidad=[1,2,3,48,9]
+print(cantidad)
+precios=[1000,2480,1800,2100,900]
+ventas=[True, False, True, True, False]
+['harina', 'leche', 'tomate', 'azucar', 'agua']
+[1, 2, 3, 48, 9]
+
+[ ]
+a = [10, 20, 30, 40, 50]
+
+print(a[:2])
+print(a[-2:])
+print(a[2:1])
+print(a[2:2])
+print(a[2:3])
+print(a[:-1])
+print(a[:])
+print(a[::2])
+print(a[1::2])
+
+[10, 20]
+[40, 50]
+[]
+[]
+[30]
+[10, 20, 30, 40]
+[10, 20, 30, 40, 50]
+[10, 30, 50]
+[20, 40]
+🧠 Preguntas:
+
+Las listas pueden guardar cualquier tipo de dato. Para practicar, creá una lista para cada uno de estos casos:
+
+Los nombres de cinco productos distintos de una tienda.
+Las cantidades disponibles de esos productos.
+Los precios correspondientes de cada producto.
+Las ventas (sí o no) de cada producto en el último mes (usando valores True o False).
+¿Es posible mezclar distintos tipos de datos dentro de una misma lista? Por ejemplo:
+
+ mezcla = [42, 3.14, "hola", True, [1, 2, 3]]
+¿Qué tipo de dato tiene cada elemento? entero, float, string, booleano, lista
+¿Qué pasa si accedés al último elemento y luego a uno de sus elementos, como mezcla[-1][1]?
+Dada la lista a = [10, 20, 30, 40]:
+
+¿Cuál es el rango válido de índices positivos?0,3
+¿Y el rango válido de índices negativos?-1,-4
+Con la misma lista a = [10, 20, 30, 40, 50], probá las siguientes expresiones y analizá qué devuelven:
+
+ a[:2]
+ a[-2:]
+ a[2:1]
+ a[2:2]
+ a[2:3]
+ a[:-1]
+ a[:]
+ a[::2]
+ a[1::2]
+¿Por qué algunas devuelven una lista vacía? ¿Tienen sentido esas expresiones?
+¿Es lo mismo a[2] que a[2:3]? ¿Qué devuelve cada una?
+Con la misma lista a = [10, 20, 30, 40, 50], escribí expresiones para obtener estas sublistas:
+
+ [10, 20, 30]
+ [30, 40, 50]
+ [20, 30, 40]
+ [10, 20, 30, 40]
+ [10, 20, 30, 40, 50]
+ [10, 30, 50]
+ [20, 40]
+Consejos:
+
+Tratá de omitir el primer o segundo índice cuando puedas, para que el código quede más claro.
+Probá usar índices negativos cuando sea conveniente.
+✏️ Respuestas:
+
+...
+...
+...
+...
+...
+🧮 Análisis de ventas
+Una persona quiso trabajar con los datos de ventas de la tienda, como lo hicimos antes... pero cometió algunos errores. 😬
+
+Mirá este fragmento de su código:
+
+
+[ ]
+# Define la lista de ventas mensuales
+ventas = [320, 280, 310, 290, 340, 360, 410, 390, 370, 350, 300, 330]
+
+# Muestra todas las ventas
+print(ventas)
+
+# Muestra las ventas de febrero
+print(ventas[1])
+
+# Muestra las ventas del segundo trimestre
+print(ventas[3:6])
+
+# Muestra las ventas de diciembre
+print(ventas[11])
+[320, 280, 310, 290, 340, 360, 410, 390, 370, 350, 300, 330]
+280
+[290, 340, 360]
+330
+😅 Algo no anda bien... ¿podés encontrar todos los errores?
+
+📌 Respondé:
+
+¿Qué errores ves en la línea donde se define la lista ventas?
+¿Por qué falla ventas[1.0]?
+¿Qué creés que quiso hacer con ventas[3;6]?
+¿Qué pasa con el índice 12?
+🐞 Errores al trabajar con listas
+Cuando empezamos a programar, es muy normal cometer errores al usar listas. En el ejemplo vimos algunos de los errores más comunes.
+
+Las listas se definen entre corchetes [] y cada valor debe ir separado por comas. Si olvidamos un corchete, una coma o usámos un punto y coma ;, la compu no va a entender lo que queremos hacer y nos va a tirar un error de sintaxis (SyntaxError).
+
+Si escribimos mal el nombre de la variable en la que guardamos la lista, como en print(venta), la compu nos mostrará un error de nombre (NameError). Lo correcto en este caso es print(ventas).
+
+Por otro lado, para indexar a un elemento de la lista usamos un índice entre corchetes. El índice es un número entero (int), no podemos usar números con decimales ni otras cosas raras. Además, la sintaxis para indexar un valor es escribir el nombre de la variable y el índice entre corchetes, como ventas[1]. En cualquier otro caso, obtendremos un error de sintaxis.
+
+En cuanto al rebanado, para acceder a una porción de la lista escribimos los índices de inicio y fin separándolos con dos puntos :. Si usamos otro símbolo como el punto y coma, el código no funcionará. La forma correcta para nuestro caso sería escribir ventas[3:6].
+
+Un error muy común a la hora de indexar un elemento en una lista es intentar acceder a un valor en una posición que no existe. Esto lo vemos en último ejemplo: print(ventas[12]). En este caso la lista ventas tiene 12 elementos, eso quiere decir que los índices válidos van del 0 al 11 (o del -1 al -12 si contamos desde el final usando índices negativos). Cualquier otro número que usemos como índice fuera de este rango nos dará el famoso IndexError. Para acceder al último elemento, lo correcto sería escribir ventas[11] o ventas[-1].
+
+🧠 Preguntas:
+
+Si una lista tiene n elementos:
+
+¿Cuál es el rango válido de índices positivos?
+¿Y el rango válido de índices negativos?
+Observá este código:
+
+ x = [0, 2, 4, 6, 8, 10]
+ y = x[1:5]
+ print(y[1])
+ print(y[-1])
+¿Qué valores contiene la variable y?
+¿Qué se muestra en pantalla?
+¿Por qué este código da error?:
+
+ colores = ["rojo", "verde", "azul", "amarillo", "naranja"]
+ print(colores[5])
+En el siguiente código, ¿qué valores puede tomar i para que se muestre correctamente un valor de la lista precios?
+
+ precios = [150, 180, 170, 160, 200]
+ n = len(precios)
+ i = ...
+ print(precios[n-i])
+Identificá qué líneas generan errores y explicá por qué.
+
+ productos = ["pan", "carne", "queso", "yerba", "manteca"]
+ n = len(productos)
+
+ print(productos["2"])
+ print(productos[n])
+ print(productos[2:1])
+ print(productos[1.0])
+ print(productos[1:10])
+✏️ Respuestas:
+
+...
+...
+...
+...
+...
+🔧 Operaciones con listas
+Una persona está trabajando con los registros de ventas mensuales de la tienda de años anteriores.
+
+Esta vez se dio cuenta de que necesita completar algunos meses que quedaron sin datos, porque se borraron accidentalmente 😱.
+
+Además, quiere actualizar otros datos que estaban mal cargados.
+
+Mirá este fragmento de su código y pensá qué está intentando hacer. Después ejecutalo para ver los resultados:
+
+
+[ ]
+ventas_2022 = [300, 290, 310, 305, 330, 350, 370, 360, 340]  # Enero a septiembre
+
+# Estima los últimos 3 meses del año con el mismo valor
+ventas_estimadas = [320] * 3
+
+ventas_2022_completas = ventas_2022 + ventas_estimadas
+print("Ventas 2022 completas:", ventas_2022_completas)
+
+# Corrección: el valor de febrero estaba mal
+ventas_2022_completas[1] = 295
+print("Ventas 2022 corregidas:", ventas_2022_completas)
+📌 Respondé:
+
+¿Qué pasa cuando hacemos ventas_2022 + ventas_estimadas?
+¿Qué hace [320] * 3?
+¿Qué pasa con la lista ventas_2022_completas luego de hacer ventas_2022_completas[1] = 295?
+➕ Concatenar y repetir listas
+Cuando usamos el operador + con dos o más listas, no se realiza una suma de los valores como si fueran números.
+
+En cambio, se produce una concatenación: las listas se unen en una sola lista, mantieniendo el orden de los elementos.
+
+En el ejemplo, concatenamos las ventas reales y las ventas estimadas de 2022:
+
+ventas_2022_completas = ventas_2022 + ventas_estimadas
+La variable ventas_2022_completas ahora contendrá todos los valores de ventas_2022 seguidos por los valores de ventas_estimadas.
+
+También podemos usar el operador * para repetir una lista varias veces. El resultado es otra lista que contiene copias de los elementos.
+
+En el ejemplo, usamos repetición para representar tres meses con las mismas ventas:
+
+ventas_estimadas = [320] * 3
+Esto crea una nueva lista con tres elementos iguales [320, 320, 320] que se guarda en la variable ventas_estimadas.
+
+📌 Concatenar o repetir una lista genera una nueva lista.
+
+✏️ Creando listas usando concatenación
+
+La concatenación también nos permite crear una nueva lista que incluye elementos al principio, al final o en el medio de otra lista.
+
+En realidad, no estamos cambiando la lista original, sino que estamos combinando listas para generar una nueva, y luego guardamos ese resultado en la misma variable (si queremos).
+
+Probá estos ejemplos:
+
+
+[ ]
+# Agregar al final
+a = [1, 2, 3, 4]
+a = a + [5]
+print(a)
+
+# Agregar al comienzo
+a = [1, 2, 3, 4]
+a = [0] + a
+print(a)
+
+# Agregar en el medio
+a = [1, 2, 3, 4]
+a = a[0:2] + [5] + a[2:4]
+print(a)
+También podemos armar una lista desde cero empezando con una lista vacía e ir agregando elementos paso a paso:
+
+
+[ ]
+a = []
+a = a + [1]
+a = a + [2]
+
+print(a)
+Este método es muy útil cuando queremos construir una lista en base a ciertas condiciones o resultados intermedios.
+
+📌 Cada vez que hacemos algo como a = a + [valor], no estamos modificando la lista original, sino que creamos una nueva lista y reasignamos el resultado a la misma variable.
+
+🧬 Mutabilidad
+Hasta ahora vimos ejemplos donde usábamos operadores como + o * para crear nuevas listas a partir de otras.
+
+Pero hay algo más, las listas tienen una propiedad importante: se pueden modificar directamente sin necesidad de crear una nueva. A esto se le llama mutabilidad.
+
+Mirá este ejemplo:
+
+ventas_2022_completas = [300, 290, 310, 305, 330, 350, 370, 360, 340, 320, 320, 320]
+ventas_2022_completas[1] = 295
+En la segunda línea, haciendo ventas_2022_completas[1] = 295 reemplazamos el segundo valor de la lista (el 290) por 295.
+
+Después de que la compu ejecute esa línea, la lista ventas_2022_completas queda así:
+
+[300, 295, 310, 305, 330, 350, 370, 360, 340, 320, 320, 320]
+Fijate como en lugar del 290 ahora está el 295. No se genera una lista nueva, simplemente modificamos el contenido existente.
+
+🔁 Tipos de datos mutables e inmutables
+
+La mutabilidad es una propiedad de algunos tipos de datos secuenciales, como las listas, que permite modificarlos directamente.
+
+En cambio, otros tipos de datos primitivos, como los enteros, las cadenas de texto y los booleanos son inmutables, es decir, no se pueden modificar directamente. Si intentás cambiarlos, en realidad estás generando un nuevo valor en otra parte de la memoria.
+
+Veamos este ejemplo:
+
+
+[ ]
+x = 1
+y = x
+y = 2
+
+print(x)
+print(y)
+Aunque y empieza con el mismo valor que x, cuando cambiamos y, x sigue igual. ¿Por qué? 🤔
+
+Porque y = x copia el valor (no la posición en memoria). Las variables quedan desconectadas entre sí.
+
+🔍 Podés visualizar esto en Python Tutor acá. Fijate cómo las variables no comparten la misma posición en memoria.
+
+📦 ¿Qué pasa con los tipos mutables y las asignaciones?
+
+Cuando trabajamos con tipos mutables la cosa cambia: la asignación de variables no copia el contenido, sino que copia la referencia (la dirección en memoria). Es decir, ambas variables apuntan al mismo objeto. Por lo tanto, si modificamos la lista desde una variable, la otra también se ve afectada.
+
+Por ejemplo:
+
+
+[ ]
+a = [1, 2, 3]
+b = a
+b[0] = 0
+
+print(a)
+print(b)
+En la asignación b = a, no se pasa la lista como valor, sino la referencia a la posición de memoria donde está la lista.
+
+De esta manera, tanto a como b apuntan a la misma lista. Así, modificar b también modifica a.
+
+🔍 Podés ver este ejemplo en Python Tutor acá. Observá cómo ambas variables comparten la misma lista en memoria.
+
+🧾 En resumen:
+
+✅ Las listas son mutables: se pueden modificar directamente.
+🚫 Los números, cadenas y booleanos son inmutables: no se pueden modificar, solo reemplazar.
+¿Qué pasa cuando hacemos var1 = var2?
+Si var2 es inmutable, se copia el valor. 👉 var1 y var2 quedan independientes.
+Si var2 es mutable, se copia la referencia. 👉 var1 y var2 apuntan al mismo objeto en memoria.
+🧠 Preguntas:
+
+Observá este código:
+ a = [0, 1]
+ b = [2]
+ c = a * 2 + b
+ d = c[1:4]
+ print(d[-1])
+¿Qué valores contienen las variables c y d?
+¿Qué se muestra en pantalla?
+Si x es una lista y queremos agregarle el valor 1, ¿qué pasa si hacemos x = x + 1? ¿Qué falta para concatenar correctamente?
+Dado z = [10, 20, 30, 40], realizá las siguientes operaciones y reasigná el resultado nuevamente a z cuando corresponda:
+Insertá el número 100 entre el segundo y tercer elemento.
+Eliminá el último elemento de la lista.
+Reemplazá el segundo elemento por 200.
+Observá este código:
+ a = [1, 2, 3]
+ b = a[:]
+ b[0] = 0
+ print(a)
+ print(b)
+¿Cuál es el valor de las variables a y b luego de ejecutar este código?
+¿Qué diferencia hay entre hacer b = a[:] y hacer b = a? ¿Cuándo se copia una lista y cuándo se pasa solo una referencia?
+Observá este código:
+ a = [1, 2, 3]
+ b = a
+ b = [4, 5]
+ print(a)
+ print(b)
+¿Por qué a pesar de haber hecho b = a el cambio posterior en b no afecta a a?
+¿Qué está pasando en la línea b = [4, 5]?
+✏️ Respuestas:
+
+...
+...
+...
+...
+...
+🔁 De uno por uno... ¡a todos juntos!
+La tienda está interesada en saber cuánto vendió en promedio por mes durante el último año.
+
+Hasta ahora, sabemos cómo acceder a cada elemento de la lista individualmente:
+
+ventas = [320, 280, 310, 290, 340, 360, 410, 390, 370, 350, 300, 330]
+
+print(ventas[0])
+print(ventas[1])
+print(ventas[2])
+# y así...
+Para sumar todas las ventas podríamos escribir esto:
+
+suma_ventas = ventas[0] + ventas[1] + ventas[2] + ventas[3] + ventas[4] + ventas[5] + ventas[6] + ventas[7] + ventas[8] + ventas[9] + ventas[10] + ventas[11]
+Pero... ¿y si la lista tuviera 100 o 1000 valores? 😱
+
+¿Habrá una forma más práctica de hacer este tipo de cálculos en la compu? 🤔
+
+Mirá este código, lée cada línea y pensá qué hace. Después ejecutalo para ver los resultados:
+
+
+[ ]
+ventas = [320, 280, 310, 290, 340, 360, 410, 390, 370, 350, 300, 330]
+
+i = 0
+suma_ventas = 0
+
+while i < len(ventas):
+    suma_ventas = suma_ventas + ventas[i]
+    i = i + 1
+
+media_ventas = suma_ventas / len(ventas)
+
+print("Media de ventas:", media_ventas)
+📌 Respondé:
+
+¿Para qué sirve la variable i? ¿Por qué empieza en 0?
+¿Qué hace len(ventas)? ¿Para qué se usa en el código?
+¿Qué tipo de valor devuelve i < len(ventas)?
+¿Qué representa el valor guardado en suma_ventas? ¿Cómo se calcula?
+¿Qué hace la línea i = i + 1? ¿Por qué es importante?
+🌀 Iteración
+Cuando programamos, muchas veces necesitamos repetir una acción varias veces. Por ejemplo, si queremos sumar todas las ventas registradas en una lista, debemos recorrer la lista, acceder a cada elemento y sumarlo al total, uno por uno, hasta llegar al final.
+
+Escribir el mismo código para cada elemento es muy trabajoso, ineficiente y propenso a errores. Para resolver este tipo de tareas repetitivas, en programación usamos el concepto de iteración.
+
+La iteración consiste en repetir una serie de instrucciones varias veces, generalmente mientras se cumpla una condición específica.
+
+Dentro de las ventajas de la iteración tenemos que:
+
+Permite automatizar tareas repetitivas.
+Facilita trabajar con grandes cantidades de datos.
+Hace que el código sea más corto, claro y eficiente.
+🔁 Ciclos o bucles
+Los ciclos (también llamados bucles) son los mecanismos que permiten llevar a cabo estas repeticiones.
+
+Cada vez que se ejecuta el bloque de código dentro de un ciclo, se produce una iteración.
+
+En otras palabras:
+
+Un ciclo es la estructura que se encarga de repitir instrucciones.
+Una iteración es cada ejecución individual del bloque de código dentro del ciclo.
+🔄 El ciclo while
+Una de las estructuras más comunes para realizar iteraciones es el ciclo while.
+
+En el ejemplo de las ventas usamos este ciclo para sumar todos los elementos de la lista ventas y luego calcular el promedio:
+
+i = 0
+suma_ventas = 0
+
+while i < len(ventas):
+    suma_ventas = suma_ventas + ventas[i]
+    i = i + 1
+
+media_ventas = suma_ventas / len(ventas)
+La variable i actúa como índice para recorrer la lista elemento por elemento. Al iniciar en i = 0, comenzamos por el primer elemento de la lista. Luego, en cada iteración del ciclo, se incrementa en 1 con la instrucción i = i + 1, lo que permite avanzar por la lista.
+
+Para ir acumulando la suma total de las ventas usamos la variable suma_ventas que inicializamos en 0. En cada vuelta del ciclo, sumamos el valor actual ventas[i] al total con: suma_ventas = suma_ventas + ventas[i].
+
+Para saber automáticamente cuántos elementos tiene la lista, usamos la función integrada en Python llamada len(), que retorna un número entero. En este caso, len(ventas) devuelve 12 porque la lista ventas tiene 12 elementos. La cantidad de elementos de una lista se suele denominar longitud de la lista.
+
+La línea while i < len(ventas) define la condición del ciclo mediante una expresión lógica. En este caso, queremos que el ciclo se repita mientras i sea menor que la longitud de la lista. Esta condición será True hasta que se procese el último elemento de la lista. Luego, cuando i el valor len(ventas), la condición se vuelve False y el ciclo termina.
+
+🖥️ ¿Qué va dentro del while?
+
+Dentro del código del while definimos las acciones que se repiten en cada iteración. En nuestro caso:
+
+Acceder al elemento actual de la lista con ventas[i] y sumarlo al total suma_ventas.
+Incrementar i para avanzar al siguiente elemento.
+Así, la compu recorre toda la lista de principio a fin. Cada vez que ejecutamos el bloque de código dentro del ciclo while, se cumple una iteración del ciclo. En este caso, se realizan en total 12 iteraciones (una por cada mes de ventas).
+
+Al finalizar el ciclo, tenemos la suma de todas las ventas en suma_ventas. Luego, calculamos la media de ventas haciendo media_ventas = suma_ventas / len(ventas).
+
+En el siguiente diagrama de flujo podés ver como se comporta un ciclo while. El código dentro de ciclo se repite mientras la condición sea verdadera y cada repetición es una iteración del ciclo. Cuando la condición se vuelve falsa, el ciclo termina.
+
+
+🔍 Para analizar el ejemplo de las ventas paso a paso podés visualizarlo con Python Tutor acá.
+
+🧠 Preguntas:
+
+Si en lugar de 12 tuviéramos 100, 1000 o 10.000 ventas… ¿sería necesario cambiar algo dentro del while?
+¿Qué sucedería si la condición del ciclo fuera i <= len(ventas) en lugar de i < len(ventas)?
+¿Qué pasaría si dentro del ciclo se incrementara i antes de sumar la venta correspondiente??
+Si i empezara en 1 en lugar de 0, ¿qué parte de la lista quedaría sin sumar?
+¿Y si ventas fuera una lista vacia: ventas = []?
+¿Qué valor devolvería len(ventas)?
+¿Se ejecutaría el ciclo while alguna vez?
+¿Qué valor final tendría suma_ventas?
+✏️ Respuestas:
+
+...
+...
+...
+...
+...
+🧮 ¡Necesitamos un contador!
+Ya calculamos la media de ventas mensuales. Ahora queremos saber en cuántos meses las ventas estuvieron por encima de esa media.
+
+El siguiente código intenta hacer eso… pero tiene algunos errores 🙈.
+
+¿Podés encontrarlos y corregirlos? 🛠️
+
+
+[ ]
+i = 1
+conteo_meses = 0
+
+while i < len(venta)
+    if ventas[] > media_ventas:
+        conteo_meses = conteo_meses - 1
+    i = i
+
+print("Meses con ventas por encima de la media:", conteo_meses)
+📌 Respondé:
+
+¿Qué función cumple la variable conteo_meses? ¿En qué momento se actualiza su valor?
+¿Qué hace la condición ventas[i] > media_ventas?
+¿Qué tipos de errores hay en el código?
+➡️ Indentación en ciclos
+Al igual que vimos en la clase 2 con los condicionales, la indentación juega un papel fundamental cuando escribimos estructuras repetitivas como un ciclo while.
+
+Hay dos reglas clave que tenemos que seguir para que el código funcione correctamente:
+
+Agregar dos puntos (:) al final de la línea del while.
+Indentar (es decir, dejar sangría) en las líneas que están dentro del bloque del ciclo.
+Esto le indica a la compu qué instrucciones debe repetir dentro del while.
+
+Por ejemplo, en este código:
+
+while i < len(ventas):
+if ventas[i] > media_ventas:
+    conteo_meses = conteo_meses + 1
+i = i + 1
+Faltan los dos puntos al final del while y el bloque dentro del while no está indentado. Lo correcto sería así:
+
+while i < len(ventas):
+    if ventas[i] > media_ventas:
+        conteo_meses = conteo_meses + 1
+    i = i + 1
+📌 Recordemos que cuando no respetamos las reglas de indentación la compu nos mostrará un mensaje de error. Lo más común es indentar usando cuatro espacios o presionar la tecla Tab en el teclado.
+
+✅ Contadores y acumuladores
+Cuando usamos ciclos hay dos patrones muy comunes que nos ayudan a resolver muchos problemas: los contadores y los acumuladores.
+
+Un contador es una variable que usamos para contar cuántas veces sucede algo. En el ejemplo, queremos saber cuántos meses tuvieron ventas por encima de la media. Para ello, usamos la variable contador conteo_meses:
+
+if ventas[i] > media_ventas:
+    conteo_meses = conteo_meses + 1
+El incremento del contador también se puede escribir usando el operador +=:
+
+if ventas[i] > media_ventas:
+    conteo_meses += 1
+Cada vez que se cumple esta condición, sumamos 1 al contador.
+
+Un acumulador es una variable que usamos para sumar valores que van cambiando. Por ejemplo, para calcular la media de ventas, primero sumamos todas las ventas usando la variable acumuladora suma_ventas:
+
+suma_ventas = suma_ventas + ventas[i]
+El incremento del acumulador también puede escribirse así:
+
+suma_ventas += ventas[i]
+En cada vuelta del ciclo, el acumulador suma el valor actual de la lista.
+
+📌 Tanto los contadores como los acumuladores deben ser inicializados antes del ciclo, normalmente con el valor 0. Si no los inicializamos, la compu mostrará un error diciendo que la variable no está definida.
+
+🧠 Preguntas:
+
+¿Cómo modificarías el código de arriba para contar los meses con ventas por debajo de la media?
+
+¿Qué pasa si el incremento de i se hiciera dentro del bloque if?
+
+Observá este código:
+
+ x = 1
+ while x <= 6:
+     x = x + 2
+¿Cuántas veces se repite el ciclo?
+¿Cuál es la última asignación de x dentro del ciclo?
+En el siguiente fragmento de código, ¿cuál es el propósito de cada variable?
+
+ suma = 0
+ cantidad = 0
+ while i < len(numeros):
+     if numeros[i] % 2 == 0:
+         suma = suma + numeros[i]
+         cantidad = cantidad + 1
+     i = i + 1
+El siguiente código es un ejemplo de un ciclo infinito. ¿Podés explicar por qué se llama así? ¿Cómo lo corregirías?
+
+ i = 0
+ while i < 5:
+     print("Hola")
+✏️ Respuestas:
+
+...
+...
+...
+...
+...
+🎯 ¿Llegamos al objetivo?
+Supongamos que la tienda quiere saber si en algún mes se alcanzó un objetivo de ventas, por ejemplo, de 400 mil unidades. Si se cumple, debemos informar en qué mes se logró por primera vez.
+
+Mirá este código, lée cada línea y pensá qué hace. Después ejecutalo para ver los resultados:
+
+
+[ ]
+objetivo = 400
+
+i = 0
+objetivo_cumplido = False
+mes_objetivo = -1
+
+while i < len(ventas) and not objetivo_cumplido:
+    if ventas[i] >= objetivo:
+        objetivo_cumplido = True
+        mes_objetivo = i + 1
+    i = i + 1
+
+if objetivo_cumplido:
+    print("Objetivo de ventas alcanzado en el mes", mes_objetivo)
+else:
+    print("No se alcanzó el objetivo de ventas en ningún mes")
+📌 Respondé:
+
+¿Para qué sirve la variable objetivo_cumplido? ¿En qué momento cambia su valor?
+¿Cuándo termina el ciclo? ¿Qué condiciones lo pueden hacer detenerse?
+¿Qué hace la línea mes_objetivo = i + 1? ¿Por qué se le suma 1?
+¿Qué valor tiene mes_objetivo si no se cumple el objetivo? ¿Por qué?
+🚩 Cortar el ciclo y variable bandera
+Cuando queremos saber si una condición se cumple al menos una vez dentro de una lista, podemos usar una variable bandera.
+
+Una bandera (o flag, en inglés) es una variable booleana (es decir, con valor True o False) que:
+
+Se inicia en False, porque al principio asumimos que la condición no se cumplió.
+Se vuelve True dentro del ciclo, justo cuando se encuentra un caso que cumple la condición.
+Permite cortar el ciclo antes de tiempo, evitando seguir recorriendo la lista innecesariamente.
+En el ejemplo usamos la bandera objetivo_cumplido y una condición compuesta en el ciclo:
+
+while i < len(ventas) and not objetivo_cumplido:
+Esto permite que el ciclo termine en dos casos:
+
+cuando se acaban los datos (toda la lista fue recorrida), o
+cuando se cumple el objetivo de ventas por primera vez.
+Si se cumple la condición de ventas, el ciclo puede terminar antes de llegar al final de la lista. Esto hace que el programa sea más eficiente, porque no analiza más datos de los necesarios.
+
+Este patrón se usa mucho en problemas de búsqueda cuando queremos:
+
+Detectar si una condición se cumple al menos una vez.
+Evitar seguir buscando una vez que encontramos lo que necesitábamos.
+📌 El valor -1 se suele usar como valor por defecto en problemas de búsqueda para representar el caso en el que no se encontró lo que estábamos buscando. Como -1 no corresponde a ninguna posición válida, es útil para indicar que no hubo coincidencias.
+
+🧠 Preguntas:
+
+¿Qué pasaría si eliminamos la condición not objetivo_cumplido del ciclo while?
+
+¿Cómo modificarías el código para que también muestre cuántas unidades se vendieron en el mes en que se alcanzó el objetivo?
+
+¿De qué otra manera podrías detener el ciclo while sin usar una variable bandera? Pensá, por ejemplo, cómo podrías usar el valor de mes_objetivo en reemplazo de objetivo_cumplido en la condición del ciclo.
+
+Si ahora te piden guardar todos los meses que alcanzaron el objetivo. ¿Cómo lo implementarías? ¿Necesitás la variable bandera?
+
+Imaginá que tenés una lista de números. Completá el siguiente código para que sume los números uno por uno hasta superar 100, y luego indique cuántos números se necesitaron para llegar a esa suma.
+
+ numeros = [10, 20, 15, 5, 30, 25, 10, 50, 40]
+ suma_numeros =
+ conteo_numeros =
+ i =
+ supero_limite =
+
+ while
+     suma_numeros =
+     conteo_numeros =
+     i =
+
+ print("Suma final:", suma_numeros)
+ print("Se necesitaron", conteo_numeros, "números para superar 100.")
+Usá una variable bandera para frenar el ciclo cuando se cumpla la condición.
+
+✏️ Respuestas:
+
+...
+...
+...
+...
+...
+📚 Recursos adicionales
+📖 En el capítulo 7 de este libro encontrarás más información sobre iteración y en el capítulo 10 sobre listas.
+🔗 Explorá más de Python Tutor para crear y visualizar tus propios programas.
+Productos pagados de Colab - Cancela los contratos aquí
+

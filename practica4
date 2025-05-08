@@ -1,0 +1,598 @@
+📌 Tema 4 Práctica: Listas, indexación y mutabilidad. Iteración y ciclo while
+
+[ ]
+
+Comienza a programar o generar con IA.
+❗Antes de comenzar con la clase, hacete una copia de este documento así podés editarlo y guardar los cambios.
+
+Hacé clic acá arriba, donde dice "Copiar en Drive".
+
+Luego seguís trabajando en esa copia y te queda todo guardado en tu Drive.
+
+📝 Ejercicio 1
+En una ciudad se registró la temperatura media (en grados) durante un año, de enero a diciembre:
+
+Los datos son los siguientes: 22, 24, 27, 30, 33, 35, 36, 35, 32, 28, 24, 22.
+
+Guardá los datos de temperatura en una lista:
+
+
+[ ]
+temperaturas = [22, 24, 27, 30, 33, 35, 36, 35, 32, 28, 24, 22]
+print("Temperaturas:", temperaturas)
+Temperaturas: [22, 24, 27, 30, 33, 35, 36, 35, 32, 28, 24, 22]
+Mostrá las temperaturas de enero, junio y diciembre:
+
+
+[ ]
+print(temperaturas[0])
+print(temperaturas[5])
+print(temperaturas[11])
+22
+35
+22
+Mostrá el otoño completo (marzo, abril y mayo) usando rebanado:
+
+
+[ ]
+print(temperaturas[2:5])
+[27, 30, 33]
+Reemplazá el valor de julio por 37:
+
+
+[ ]
+temperaturas[5] = "julio
+print("Temperaturas luego de la modificación:", temperaturas)
+
+Mostrá la primera mitad del año:
+
+
+[ ]
+print(temperaturas[0:6])
+[22, 24, 27, 30, 33, 'julio']
+Mostrá la segunda mitad del año usando índices negativos:
+
+
+[ ]
+print(temperaturas[-6:])
+[36, 35, 32, 28, 24, 22]
+📝 Ejercicio 2
+En una encuesta realizada a 10 personas se les pidió que calificaran un servicio con puntajes del 1 al 5.
+
+Los datos son los siguientes: 5, 4, 3, 5, 2, 1, 4, 5, 3, 2
+
+Guardá las respuestas en una lista:
+
+
+[ ]
+respuestas = [5, 4, 3, 5, 2, 1, 4, 5, 3, 2]
+print("Respuestas:", respuestas)
+Respuestas: [5, 4, 3, 5, 2, 1, 4, 5, 3, 2]
+Mostrá la primera y última respuesta:
+
+
+[ ]
+print(respuestas[0])
+print(respuestas[-1])
+5
+2
+Mostrá las 4 respuestas centrales:
+
+
+[ ]
+print(respuestas[3:-3])
+[5, 2, 1, 4]
+Intercambiá las respuestas de la persona 2 y la persona 4:
+
+
+[ ]
+aux = respuestas[]
+respuestas[] =
+respuestas[] =
+
+print("Respuestas luego del intercambio:", )
+
+Mostrá solo las respuestas de personas en posiciones impares (1, 3, 5...).
+
+Pista: podés usar rebanado con un tercer índice para definir un paso o salto: inicio:fin:paso
+
+
+[ ]
+print(respuestas[1::2])
+[4, 5, 1, 5, 2]
+Mostrá solo las respuestas en posiciones pares (0, 2, 4...):
+
+
+[ ]
+print(respuestas[::2])
+[5, 3, 2, 4, 3]
+📝 Ejercicio 3
+Una cafetería registró los pedidos diarios durante 2 semanas:
+
+
+[ ]
+pedidos_semana_1 = [120, 135, 150, 145, 160, 180, 200]  # Lunes a domingo
+pedidos_semana_2 = [130, 140, 155, 150, 170, 190, 210]
+Uní ambas semanas en una lista completa de 14 días:
+
+
+[ ]
+pedidos_totales = pedidos_semana_1 + pedidos_semana_2
+print("Pedidos totales:", pedidos_totales )
+Pedidos totales: [120, 135, 150, 145, 160, 180, 200, 130, 140, 155, 150, 170, 190, 210]
+Extraé los pedidos del primer fin de semana (sábado y domingo de la semana 1) y luego calculá y mostrá la suma total de pedidos:
+
+
+[ ]
+fin_de_semana_1 = pedidos_totales[6:8]
+total_fin_de_semana_1 = fin_de_semana_1[0] + fin_de_semana_1[1]
+print("Pedidos totales fin de semana 1:",total_fin_de_semana_1 )
+Pedidos totales fin de semana 1: 330
+Mostrá los pedidos de la primera y segunda semana por separado:
+
+
+[ ]
+primera_mitad = pedidos_totales[0:7]
+segunda_mitad = pedidos_totales[7:15]
+
+print("Pedidos semana 1:",primera_mitad )
+print("Pedidos semana 2:",segunda_mitad)
+Pedidos semana 1: [120, 135, 150, 145, 160, 180, 200]
+Pedidos semana 2: [130, 140, 155, 150, 170, 190, 210]
+Reemplazá el valor del primer lunes (semana 1) por 125:
+
+
+[ ]
+pedidos_totales[0] = 125
+print("Pedidos totales luego del reemplazo:",pedidos_totales )
+Pedidos totales luego del reemplazo: [125, 125, 150, 145, 160, 180, 200, 130, 140, 155, 150, 170, 190, 210]
+Mostrá los días con 150 o más pedidos por semana (usá rebanado y concatenación para elegir intervalos y unir):
+
+
+[ ]
+altos_semana_1 = pedidos_totales[2] + pedidos_totales[4] +pedidos_totales[5]+ pedidos_totales[6]
+altos_semana_2 = pedidos_totales[-5:]
+print("Pedidos altos semana 1:",altos_semana_1 )
+print("Pedidos altos semana 2:",altos_semana_2 )
+
+print("Pedidos altos semana 1:", )
+print("Pedidos altos semana 2:", )
+Pedidos altos semana 1: 690
+Pedidos altos semana 2: [155, 150, 170, 190, 210]
+Pedidos altos semana 1:
+Pedidos altos semana 2:
+📝 Ejercicio 4
+Se registraron las ventas de 3 productos en 4 semanas:
+
+
+[ ]
+producto_A = [10, 12, 13, 11]
+producto_B = [20, 18, 17, 21]
+producto_C = [15, 14, 16, 15]
+Calculá y mostrá la venta total de la primera semana (sumá manualmente con índices):
+
+
+[ ]
+total_semana_1 = producto_A[] +
+print("Total semana 1:", )
+Mostrá la última venta de cada producto:
+
+
+[ ]
+print("Última venta producto A:", )
+print("Última venta producto B:", )
+print("Última venta producto C:", )
+Armá una lista con todas las ventas de los 3 productos usando concatenación:
+
+
+[ ]
+ventas_totales =
+print("Ventas totales:", )
+Mostrá solo las ventas de producto B usando la lista conjunta:
+
+
+[ ]
+print("Ventas producto B:", )
+Reemplazá los dos últimos valores del producto C por 15 en la lista conjunta usando rebanado y repetición:
+
+
+[ ]
+ventas_totales[] =
+print("Ventas totales luego de la modificación:", )
+📝 Ejercicio 5
+En un consultorio de una clínica se registraron los turnos del día para la sección de cardiología.
+
+Los datos son los siguientes: Ana, Luis, María, Jorge, Sofía
+
+Guardá los turnos en una lista:
+
+
+[ ]
+turnos_cardiologia =
+print("Turnos cardiología:", turnos_cardiologia)
+Mostrá el primer y último turno del día:
+
+
+[ ]
+print("Primer turno:", )
+print("Último turno:", )
+Modificá el segundo turno por "Lucía":
+
+
+[ ]
+turnos_cardiologia[] =
+print("Turnos actualizados:", )
+Mostrá los turnos centrales (segundo, tercer y cuarto turno):
+
+
+[ ]
+print("Turnos centrales:", )
+Agregá dos turnos más al final: "Pedro" y "Elena" (usando concatenación):
+
+
+[ ]
+turnos_cardiologia = turnos_cardiologia +
+print("Turnos con agregados:", )
+Eliminá los dos primeros turnos (usando rebanado):
+
+
+[ ]
+turnos_cardiologia =
+print("Turnos luego de eliminar los dos primeros:", )
+Ahora supongamos que en el laboratorio también se registraron los turnos para otra sección de atención.
+
+Observá este código:
+
+
+[ ]
+turnos_laboratorio = ["Carlos", "Rocío", "Andrés", "Valeria", "Noelia"]
+
+turnos_lab_A = turnos_laboratorio
+turnos_lab_B = turnos_laboratorio[:]
+Modificá el primer turno de la lista turnos_lab_A por "Gabriel":
+
+
+[ ]
+turnos_lab_A[0] =
+Mostrá todas las listas:
+
+
+[ ]
+print("Turnos laboratorio (original):", )
+print("Turnos en laboratorio A:", )
+print("Turnos en laboratorio B:", )
+📌 Preguntas:
+
+¿Qué diferencias observás entre las listas turnos_lab_A y turnos_lab_B?
+¿Qué pasó con la lista turnos_laboratorio después de modificar turnos_lab_A?
+¿Por qué turnos_lab_B no se modificó?
+¿Qué podés decir sobre la diferencia entre asignar una lista y copiarla con [:]?
+✏️ Respuestas:
+
+...
+...
+...
+...
+📝 Ejercicio 6
+Retomemos los datos de ventas de la tienda que vimos en la clase 4.
+
+Los datos (en miles de unidades) para cada mes son: 320, 280, 310, 290, 340, 360, 410, 390, 370, 350, 300, 330.
+
+Completá el código para calcular el total de ventas:
+
+
+[ ]
+ventas = [320, 280, 310, 290, 340, 360, 410, 390, 370, 350, 300, 330]
+
+i =
+suma_ventas =
+
+while :
+
+
+print("Suma total de ventas:", suma_ventas)
+📌 Preguntas:
+
+¿Qué valor devuelve len(ventas)?
+¿Cuántas iteraciones hace el ciclo antes de terminar?
+¿Cuál es el valor de i y de suma_ventas al finalizar la iteración 3?
+¿Qué pasaría si usáramos i <= len(notas) en la condición del while?
+✏️ Respuestas:
+
+...
+...
+...
+...
+Calculá la media de ventas:
+
+
+[ ]
+media_ventas =
+print("Media de ventas:", )
+Mostrá en pantalla las ventas de los primeros 6 meses usando un ciclo while:
+
+
+[ ]
+i = 0
+while i <
+    print()
+    i =
+Contá cuántos meses tuvieron ventas mayores a 350:
+
+
+[ ]
+i = 0
+conteo_altas = 0
+
+while
+    if
+        conteo_altas
+    i =
+
+print("Meses con ventas altas:", )
+Contá cuántos meses tuvieron ventas menores o iguales a 300:
+
+
+[ ]
+i =
+conteo_bajas =
+
+while
+    if
+        conteo_bajas
+    i =
+
+print("Meses con ventas bajas:", )
+Mostrá los índices de los meses en los que las ventas fueron mayores a 320 y menores a 370:
+
+
+[ ]
+i = 0
+while
+    if
+        print()
+    i =
+Calculá la media de ventas solo de los meses que tuvieron más de 350.
+
+Pista: vas a necesitar un acumulador para la suma y un contador para saber cuántos fueron.
+
+
+[ ]
+suma_ventas =
+conteo_meses =
+
+i =
+while
+
+media_ventas_altas =
+
+print("Meses con ventas superiores a 350:", conteo_meses)
+print("Media de ventas superiores a 350:", media_ventas_altas)
+Ahora queremos saber cuántos meses de ventas se necesitan sumar desde el principio hasta que el total acumulado supere 900.
+
+Para eso, usá un ciclo while y una variable bandera que se vuelva True cuando se supere ese total:
+
+
+[ ]
+suma_acumulada =
+supero_limite =
+
+i =
+while
+    suma_acumulada =
+    if
+        supero_limite =
+    i =
+
+print("Suma acumulada:", suma_acumulada)
+print("Meses necesarios para superar 900:", i)
+📝 Ejercicio 7
+En una materia se dispone de las notas finales de un examen y se quiere calcular el desvío estándar.
+
+Sin embargo, el código que tenemos tiene errores. Corregilo para que funcione bien.
+
+
+[ ]
+notas = [7, 8, 9, 6, 10, 5]
+
+i = 0
+suma_notas = 1
+
+while i <= len(notas):
+suma_notas = suma_notas + notas[i]
+i = i
+
+media_notas = suma_nota / len(notas
+
+i = 0
+
+while i < len(notas)
+    dif_notas = notas[i] - media_notas
+    suma_dif_notas = suma_dif_notas + dif_notas^2
+    i = 1
+
+desvio_notas = suma_dif_notas / len(notas) ** 0.5
+print("El desvío estándar es:", desvio_notas)
+📌 Preguntas:
+
+¿Por qué usamos dos ciclos while?
+¿Qué clase de variables son suma_notas y suma_dif_notas?
+✏️ Respuestas:
+
+...
+...
+Modificá el código para que len(notas) se use una sola vez:
+
+
+[ ]
+# Escribí tu código acá
+¿Cómo calcularías el rango (máximo-mínimo) usando los índices de la lista? Probalo:
+
+
+[ ]
+# Escribí tu código acá
+📝 Ejercicio 8
+Observá el código en la celda a continuación:
+
+
+[ ]
+nombres = ["Luna", "Oscar", "Mateo", "Julia", "Ana"]
+asistencias = [True, False, True, False, True]
+
+n = len(nombres)
+presentes = []
+
+i = 0
+while i < n:
+    if asistencias[i] == True:
+        presentes = presentes + [nombres[i]]
+    i = i + 1
+
+print(presentes)
+📌 Preguntas:
+
+Explicá con tus palabras lo que hace el código.
+¿Qué tipo de datos contienen las listas nombres y asistencias?
+¿Qué se guarda en la variable n? ¿Sería lo mismo si se usara len(asistencias) en este caso?
+¿Que hace la línea presentes = []?
+¿Qué operación se hace en presentes = presentes + [nombres[i]]?
+✏️ Respuestas:
+
+...
+...
+...
+...
+...
+📝 Ejercicio 9
+Una organización está analizando los datos de edad de 15 participantes de un taller. Las edades recolectadas son:
+
+
+[ ]
+edades = [28, 35, 42, 51, 63, 40, 47, 54, 76, 33, 45, 60, 29, 41, 38]
+Se desea clasificar a cada persona según su grupo etario:
+
+🟢 Adulto joven: de 20 a 39 años inclusive.
+🔵 Adulto: de 40 a 59 años inclusive.
+🟣 Persona mayor: 60 años o más.
+Completá el código para armar una lista que contenga el grupo etario según la edad:
+
+
+[ ]
+# Definí una lista vacía para guardar los grupos etarios
+grupos =
+
+# Recorré la lista de edades y asigná el grupo etario correspondiente
+i = 0
+while i < len():
+    if 20 <= edades[i] and edades[i] <= 39:
+        grupos = grupos + ["Adulto joven"]
+    elif
+
+    i = i + 1
+
+print("Grupos etarios:", grupos)
+Si en lugar inicializar grupos con una lista vacía, hiciéramos grupos = [0] * len(edades).
+
+¿Qué necesitás modificar dentro del ciclo while para que funcione bien?
+
+
+[ ]
+# Escribí tu código acá
+Calculá las frecuencias absolutas y relativas para cada categoría de grupo:
+
+
+[ ]
+# Frecuencias absolutas
+
+conteo_adulto_joven =
+conteo_adulto =
+conteo_persona_mayor
+
+i =
+while
+    if grupos[i] == "Adulto joven":
+        conteo_adulto_joven
+    elif
+
+    i =
+
+print("Frecuencia absoluta:")
+print("Adulto joven:", )
+print("Adulto:", )
+print("Persona mayor:", )
+
+[ ]
+# Frecuencias relativas
+
+total =
+
+proporcion_adulto_joven =
+proporcion_adulto
+proporcion_persona_mayor
+
+print("Frecuencia relativa:")
+print("Adulto joven:", )
+print("Adulto:", )
+print("Persona mayor:", )
+📌 Preguntas:
+
+¿Qué tipo de dato estadístico son edades y grupos?
+¿Cuál es el grupo etario mayoritario? ¿Y el minoritario?
+✏️ Respuestas:
+
+...
+...
+Con los datos de grupos y edades, calculá la media de edad dentro de cada grupo etario:
+
+
+[ ]
+suma_edades_adulto_joven = 0
+suma_edades_adulto
+suma_edades_persona_mayor
+
+i =
+while
+    if
+    elif
+    else
+    i =
+
+media_edades_adulto_joven =
+media_edades_adulto
+media_edades_persona_mayor
+
+print("Media de edades Adulto joven:", )
+print("Media de edades Adulto:", )
+print("Media de edades Persona mayor:", )
+📝 Ejercicio 10
+Una nutricionista está analizando las alturas de 12 personas que participaron en una consulta grupal.
+
+Los datos disponibles son:
+
+
+[ ]
+alturas_cm = [152, 170, 165, 180, 155, 160, 175, 168, 182, 158, 162, 177]
+Las alturas fueron recolectadas en centímetros, pero para los informes debe trabajarlas en metros.
+
+Escribí un código para transformar las alturas a metros y guardarlas en una nueva lista:
+
+
+[ ]
+# Escribí tu código acá
+Ahora calculá la media y el desvío estándar de las alturas en metros:
+
+
+[ ]
+# Escribí tu código acá
+📌 Preguntas:
+
+¿Qué tipo de dato estadístico es la altura?
+¿En qué unidades están la media y el desvío estándar?
+¿Qué significa que el desvío estándar sea alto o bajo en este contexto?
+Si otro grupo tiene alturas con una media de 1.68 m y un desvío de 0.02, ¿qué podría concluir la nutricionista respecto a ese grupo?
+✏️ Respuestas:
+
+...
+...
+...
+...
